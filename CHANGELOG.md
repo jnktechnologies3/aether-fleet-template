@@ -5,6 +5,27 @@ All notable changes to **Aether Fleet Template** will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] — 2026-09-24
+
+### Added
+
+- **Overview upgrades** — health cards (Sites · Themes in library · Active theme · Last save), fleet snapshot table, quick theme-apply-to-all with confirm, activity clear, CTA row (New site / Theme Studio / Export fleet pack)
+- **Theme Studio compare mode** — side-by-side mini preview of current theme vs a selected preset
+- **Duplicate theme** — one-click library snapshot with auto name (`… copy`)
+- **Reset section** — colors/gradients, fonts, and effects/density/radius reset to aether-purple defaults
+- **Fleet bulk select** — multi-select sites + apply one theme to the selection
+- **Fleet export / import** — `fleet.json` round-trip (sites + library + optional activity/theme)
+- **Agent Kit fleet pack** — download `aether-fleet-pack.json` (`{ version, exportedAt, theme, sites, library }`)
+- **Spin N sites prompt** — copy button using current fleet site names
+- **Command palette** — `/` or `Cmd/Ctrl+K` jump to Overview/Theme/Fleet/Agent/Settings + Save/Export actions (~50 lines, no extra deps)
+- **Settings** — `/dashboard/settings` density, show/hide seeded tips, danger reset of all `aether-fleet-*` localStorage keys; Settings in left nav
+- **Visual polish** — page headers, status pills, empty states with CTAs; mobile top-tab nav retained
+
+### Changed
+
+- Dashboard framing as an ops console for the website fleet (still client-only / localStorage)
+- Activity kinds extended for fleet export/import and settings
+
 ## [0.1.0] — 2026-09-24
 
 ### Added
