@@ -1,1 +1,19 @@
-{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"https://aether.lab/schemas/theme-tokens.json","title":"ThemeTokens","type":"object","required":["id","brand","colors","gradients","fonts","radius","spacingDensity","effects"],"additionalProperties":false,"properties":{"id":{"type":"string","minLength":1},"brand":{"type":"object","required":["name","tagline","logoText"],"properties":{"name":{"type":"string"},"tagline":{"type":"string"},"logoText":{"type":"string"}}},"colors":{"type":"object","required":["bgDeep","bgMid","violet","purple","sky","cyan","text","textMuted","border","success","danger","cardBg"]},"gradients":{"type":"object","required":["heroFrom","heroTo","ctaFrom","ctaMid","ctaTo"]},"fonts":{"type":"object","required":["sans","mono"]},"radius":{"type":"object","required":["sm","md","lg","xl"]},"spacingDensity":{"enum":["comfortable","compact"]},"effects":{"type":"object","required":["glowIntensity","glassOpacity"]}}}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aether.lab/schemas/theme-tokens.json",
+  "title": "ThemeTokens",
+  "description": "Fleet visual identity for Aether-style marketing sites. Drop as public/themes/*.json or import via Fleet Theme Studio.",
+  "type": "object",
+  "required": ["id", "brand", "colors", "gradients", "fonts", "radius", "spacingDensity", "effects"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "description": "Stable theme slug (e.g. aether-purple, ocean-teal).", "minLength": 1 },
+    "brand": { "type": "object", "required": ["name", "tagline", "logoText"], "additionalProperties": false, "properties": { "name": { "type": "string" }, "tagline": { "type": "string" }, "logoText": { "type": "string" } } },
+    "colors": { "type": "object", "required": ["bgDeep", "bgMid", "violet", "purple", "sky", "cyan", "text", "textMuted", "border", "success", "danger", "cardBg"], "additionalProperties": false, "properties": { "bgDeep": { "type": "string", "description": "Page background (hex or rgba)" }, "bgMid": { "type": "string" }, "violet": { "type": "string", "description": "Primary accent" }, "purple": { "type": "string", "description": "Secondary accent / soft primary" }, "sky": { "type": "string" }, "cyan": { "type": "string", "description": "Highlight / CTA end" }, "text": { "type": "string" }, "textMuted": { "type": "string" }, "border": { "type": "string" }, "success": { "type": "string" }, "danger": { "type": "string" }, "cardBg": { "type": "string" } } },
+    "gradients": { "type": "object", "required": ["heroFrom", "heroTo", "ctaFrom", "ctaMid", "ctaTo"], "additionalProperties": false, "properties": { "heroFrom": { "type": "string", "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$" }, "heroTo": { "type": "string", "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$" }, "ctaFrom": { "type": "string", "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$" }, "ctaMid": { "type": "string", "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$" }, "ctaTo": { "type": "string", "pattern": "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$" } } },
+    "fonts": { "type": "object", "required": ["sans", "mono"], "additionalProperties": false, "properties": { "sans": { "type": "object", "required": ["family"], "properties": { "family": { "type": "string" }, "url": { "type": "string" } } }, "mono": { "type": "object", "required": ["family"], "properties": { "family": { "type": "string" }, "url": { "type": "string" } } } } },
+    "radius": { "type": "object", "required": ["sm", "md", "lg", "xl"], "additionalProperties": false, "properties": { "sm": { "type": "string" }, "md": { "type": "string" }, "lg": { "type": "string" }, "xl": { "type": "string" } } },
+    "spacingDensity": { "type": "string", "enum": ["comfortable", "compact"] },
+    "effects": { "type": "object", "required": ["glowIntensity", "glassOpacity"], "additionalProperties": false, "properties": { "glowIntensity": { "type": "number", "minimum": 0, "maximum": 1 }, "glassOpacity": { "type": "number", "minimum": 0, "maximum": 1 } } }
+  }
+}
