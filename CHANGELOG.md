@@ -5,6 +5,17 @@ All notable changes to **Aether Fleet Template** will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] — 2026-09-24
+
+### Added
+
+- **Fleet Dashboard operator guide** — [`docs/FLEET_DASHBOARD.md`](./docs/FLEET_DASHBOARD.md) covering Overview, Theme Studio, Fleet, Agent Kit, Settings, command palette, localStorage keys, and typical workflows
+- **Docs index** — [`docs/README.md`](./docs/README.md)
+
+### Changed
+
+- README links the full dashboard guide under Usage and the Table of Contents
+
 ## [0.2.0] — 2026-09-24
 
 ### Added
