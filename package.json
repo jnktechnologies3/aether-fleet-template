@@ -1,6 +1,6 @@
 {
   "name": "aether-fleet-template",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Aether Fleet Template — agent-usable Vite + React marketing starter with Theme Studio, fleet registry, and design-token theming (Aether Lab / JNK Technologies).",
   "type": "module",

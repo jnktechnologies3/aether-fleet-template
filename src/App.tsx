@@ -6,6 +6,7 @@ import OverviewPanel from './pages/dashboard/OverviewPanel'
 import ThemeStudioPanel from './pages/dashboard/ThemeStudioPanel'
 import FleetPanel from './pages/dashboard/FleetPanel'
 import AgentKitPanel from './pages/dashboard/AgentKitPanel'
+import SettingsPanel from './pages/dashboard/SettingsPanel'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
             <Route path="theme" element={<ThemeStudioPanel />} />
             <Route path="fleet" element={<FleetPanel />} />
             <Route path="agent" element={<AgentKitPanel />} />
+            <Route path="settings" element={<SettingsPanel />} />
           </Route>
         </Routes>
       </BrowserRouter>
