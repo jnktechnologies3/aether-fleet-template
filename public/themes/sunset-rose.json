@@ -1,0 +1,8 @@
+{
+  "id": "sunset-rose",
+  "brand": {"name": "Ember Studio", "tagline": "Warm craft for bold products", "logoText": "Ember Studio"},
+  "colors": {"bgDeep": "#1a0a10", "bgMid": "#2a1018", "violet": "#e11d48", "purple": "#fb7185", "sky": "#fbbf24", "cyan": "#f59e0b", "text": "#fff7ed", "textMuted": "rgba(255,247,237,0.62)", "border": "rgba(251,113,133,0.2)", "success": "#4ade80", "danger": "#ef4444", "cardBg": "rgba(225,29,72,0.06)"},
+  "gradients": {"heroFrom": "#e11d48", "heroTo": "#f59e0b", "ctaFrom": "#be123c", "ctaMid": "#e11d48", "ctaTo": "#f59e0b"},
+  "fonts": {"sans": {"family": "Outfit", "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"}, "mono": {"family": "IBM Plex Mono", "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"}},
+  "radius": {"sm": "0.5rem", "md": "0.875rem", "lg": "1.25rem", "xl": "1.75rem"}, "spacingDensity": "comfortable", "effects": {"glowIntensity": 0.65, "glassOpacity": 0.045}
+}
