@@ -56,7 +56,10 @@ Dev:
 ```bash
 npm run dev
 # Landing:  http://localhost:5173/
-# Theme Studio: http://localhost:5173/dashboard
+# Fleet Dashboard: http://localhost:5173/dashboard
+#   /dashboard/theme  Theme Studio
+#   /dashboard/fleet  Site registry
+#   /dashboard/agent  Agent Kit
 ```
 
 ## 5. Schema
