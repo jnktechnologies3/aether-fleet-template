@@ -1,0 +1,50 @@
+{
+  "id": "ocean-teal",
+  "brand": {
+    "name": "Tideworks",
+    "tagline": "Deep systems, clear currents",
+    "logoText": "Tideworks"
+  },
+  "colors": {
+    "bgDeep": "#02141c",
+    "bgMid": "#042f3a",
+    "violet": "#0d9488",
+    "purple": "#2dd4bf",
+    "sky": "#7dd3fc",
+    "cyan": "#38bdf8",
+    "text": "#f0fdfa",
+    "textMuted": "rgba(240,253,250,0.6)",
+    "border": "rgba(45,212,191,0.18)",
+    "success": "#34d399",
+    "danger": "#fb7185",
+    "cardBg": "rgba(13,148,136,0.08)"
+  },
+  "gradients": {
+    "heroFrom": "#0d9488",
+    "heroTo": "#38bdf8",
+    "ctaFrom": "#0f766e",
+    "ctaMid": "#14b8a6",
+    "ctaTo": "#38bdf8"
+  },
+  "fonts": {
+    "sans": {
+      "family": "DM Sans",
+      "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+    },
+    "mono": {
+      "family": "Fira Code",
+      "url": "https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap"
+    }
+  },
+  "radius": {
+    "sm": "0.25rem",
+    "md": "0.5rem",
+    "lg": "0.875rem",
+    "xl": "1.25rem"
+  },
+  "spacingDensity": "comfortable",
+  "effects": {
+    "glowIntensity": 0.55,
+    "glassOpacity": 0.04
+  }
+}
