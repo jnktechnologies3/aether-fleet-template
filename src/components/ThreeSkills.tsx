@@ -1,1 +1,67 @@
-const items=[{title:'Context restraint',blurb:'Load what the task needs — leave the rest out. Agents drift when every file is “just in case.”',diagram:<svg viewBox="0 0 160 80" className="w-full max-w-[160px]" aria-hidden><rect x="8" y="20" width="40" height="40" rx="6" fill="rgba(var(--color-violet-rgb),0.35)" stroke="var(--color-purple)"/><rect x="58" y="28" width="28" height="24" rx="4" fill="rgba(var(--color-cyan-rgb),0.25)" stroke="var(--color-cyan)"/><rect x="96" y="32" width="20" height="16" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" strokeDasharray="3 2"/><text x="18" y="44" fill="var(--color-purple)" fontSize="8">need</text><text x="62" y="44" fill="var(--color-sky)" fontSize="7">task</text></svg>},{title:'Catch drift early',blurb:'Review after each slice, not after a 2,000-line dump. Small corrections beat full restarts.',diagram:<svg viewBox="0 0 160 80" className="w-full max-w-[160px]" aria-hidden><path d="M20 60 L50 40 L80 48 L110 28 L140 32" fill="none" stroke="var(--color-violet)" strokeWidth="2"/><circle cx="50" cy="40" r="5" fill="var(--color-cyan)"/><circle cx="110" cy="28" r="5" fill="var(--color-cyan)"/><text x="42" y="72" fill="rgba(255,255,255,0.4)" fontSize="7">check</text><text x="100" y="72" fill="rgba(255,255,255,0.4)" fontSize="7">check</text></svg>},{title:'Steer without restart',blurb:'When the agent goes sideways, redirect with a sharper goal — don’t throw away the whole session.',diagram:<svg viewBox="0 0 160 80" className="w-full max-w-[160px]" aria-hidden><path d="M20 40 Q60 10, 80 40 T140 40" fill="none" stroke="rgba(244,63,94,0.5)" strokeWidth="2" strokeDasharray="4 3"/><path d="M20 50 L70 50 L90 30 L140 30" fill="none" stroke="var(--color-cyan)" strokeWidth="2.5"/><polygon points="140,30 132,26 132,34" fill="var(--color-cyan)"/></svg>}];export default function ThreeSkills(){return <section className="section-pad"><div className="mx-auto max-w-6xl"><div className="mb-12 text-center"><h2 className="section-title">Three skills <span className="text-gradient">before typing</span></h2><p className="section-sub mx-auto mt-4">Judgment first. Keystrokes second. These habits decide whether agents help or thrash.</p></div><div className="grid gap-6 md:grid-cols-3">{items.map(item=><div key={item.title} className="card flex flex-col"><div className="mb-4 flex h-20 items-center justify-center rounded-xl bg-black/30 border border-white/5">{item.diagram}</div><h3 className="text-lg font-semibold">{item.title}</h3><p className="mt-2 text-sm leading-relaxed text-white/55">{item.blurb}</p></div>)}</div></div></section>}
+const items = [
+  {
+    title: 'Context restraint',
+    blurb: 'Load what the task needs — leave the rest out. Agents drift when every file is “just in case.”',
+    diagram: (
+      <svg viewBox="0 0 160 80" className="w-full max-w-[160px]" aria-hidden>
+        <rect x="8" y="20" width="40" height="40" rx="6" fill="rgba(var(--color-violet-rgb),0.35)" stroke="var(--color-purple)" />
+        <rect x="58" y="28" width="28" height="24" rx="4" fill="rgba(var(--color-cyan-rgb),0.25)" stroke="var(--color-cyan)" />
+        <rect x="96" y="32" width="20" height="16" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" strokeDasharray="3 2" />
+        <text x="18" y="44" fill="var(--color-purple)" fontSize="8">need</text>
+        <text x="62" y="44" fill="var(--color-sky)" fontSize="7">task</text>
+      </svg>
+    ),
+  },
+  {
+    title: 'Catch drift early',
+    blurb: 'Review after each slice, not after a 2,000-line dump. Small corrections beat full restarts.',
+    diagram: (
+      <svg viewBox="0 0 160 80" className="w-full max-w-[160px]" aria-hidden>
+        <path d="M20 60 L50 40 L80 48 L110 28 L140 32" fill="none" stroke="var(--color-violet)" strokeWidth="2" />
+        <circle cx="50" cy="40" r="5" fill="var(--color-cyan)" />
+        <circle cx="110" cy="28" r="5" fill="var(--color-cyan)" />
+        <text x="42" y="72" fill="rgba(255,255,255,0.4)" fontSize="7">check</text>
+        <text x="100" y="72" fill="rgba(255,255,255,0.4)" fontSize="7">check</text>
+      </svg>
+    ),
+  },
+  {
+    title: 'Steer without restart',
+    blurb: 'When the agent goes sideways, redirect with a sharper goal — don’t throw away the whole session.',
+    diagram: (
+      <svg viewBox="0 0 160 80" className="w-full max-w-[160px]" aria-hidden>
+        <path d="M20 40 Q60 10, 80 40 T140 40" fill="none" stroke="rgba(244,63,94,0.5)" strokeWidth="2" strokeDasharray="4 3" />
+        <path d="M20 50 L70 50 L90 30 L140 30" fill="none" stroke="var(--color-cyan)" strokeWidth="2.5" />
+        <polygon points="140,30 132,26 132,34" fill="var(--color-cyan)" />
+      </svg>
+    ),
+  },
+]
+
+export default function ThreeSkills() {
+  return (
+    <section className="section-pad">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 text-center">
+          <h2 className="section-title">
+            Three skills <span className="text-gradient">before typing</span>
+          </h2>
+          <p className="section-sub mx-auto mt-4">
+            Judgment first. Keystrokes second. These habits decide whether agents help or thrash.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {items.map((item) => (
+            <div key={item.title} className="card flex flex-col">
+              <div className="mb-4 flex h-20 items-center justify-center rounded-xl bg-black/30 border border-white/5">
+                {item.diagram}
+              </div>
+              <h3 className="text-lg font-semibold">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/55">{item.blurb}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
