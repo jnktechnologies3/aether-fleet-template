@@ -1,130 +1,283 @@
-# Aether Fleet Template — Agentic Engineering System
+<p align="center">
+  <img src="https://img.shields.io/badge/version-0.1.0-6366f1?style=flat-square" alt="Version" />
+  <img src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind-v4-38bdf8?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind" />
+  <img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat-square" alt="License" />
+</p>
 
-Agent-usable **website fleet starter**: a polished marketing landing plus a multi-panel **Fleet Dashboard** for managing look-and-feel across a local site fleet.
+# Aether Fleet Template
 
-Inspired by premium course-site UX patterns — **all branding and copy are original**.
+> An agent-usable **website fleet starter** from **Aether Lab** — polished marketing landing, CSS-variable design tokens, live **Theme Studio**, local **Fleet** registry, and an **Agent Kit** for spinning themed sites from JSON.
 
-## Stack
+---
 
-- Vite + React 19 + TypeScript
-- React Router (`/` landing, `/dashboard/*` Fleet Dashboard)
-- Tailwind CSS v4 (`@tailwindcss/vite`) with **CSS-variable design tokens**
-- Google Fonts injected by the theme engine
+## Table of Contents
 
-## Quick start
+- [Core Features](#core-features)
+- [All Features](#all-features)
+- [Tech Stack](#tech-stack)
+- [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [npm](#npm)
+  - [Docker](#docker)
+- [Environment Variables](#environment-variables)
+- [Project Structure](#project-structure)
+- [Usage](#usage)
+- [Agent Contract](#agent-contract)
+- [Version History](#version-history)
+- [Roadmap](#roadmap)
+- [License](#license)
+
+---
+
+## Core Features
+
+| Feature | Description |
+|---------|-------------|
+| **Marketing Landing** | Full token-aware course-style landing (`/`) — hero, curriculum, pricing, FAQ, and more |
+| **Design Tokens** | CSS variables for colors, gradients, fonts, radius, density, glow, and glass |
+| **Theme Studio** | Live controls at `/dashboard/theme` — pickers, presets, export/import, library save |
+| **Fleet Registry** | Local site list + theme assignments at `/dashboard/fleet` (browser `localStorage`) |
+| **Agent Kit** | Schema, briefs, downloadable theme JSON, and in-app [`AGENT_TEMPLATE.md`](./AGENT_TEMPLATE.md) |
+| **Preset Themes** | Ship with `aether-purple`, `ocean-teal`, `sunset-rose` under `public/themes/` |
+| **Query Themes** | Load a preset with `/?theme=ocean-teal` on first mount |
+| **Docker SPA** | Multi-stage Vite build served by nginx:alpine with React Router `try_files` |
+
+---
+
+## All Features
+
+### Landing
+
+- **Hero** — branded gradient hero with CTAs driven by `src/content/site.ts` + theme tokens
+- **Problem / Middle Path** — narrative sections for the product story
+- **Skills grid & terminal** — visual skill callouts and terminal-style demo
+- **Curriculum / Workflow / Scenarios** — structured content blocks
+- **Pricing** — tier cards (demo CTAs use `alert` — no checkout backend)
+- **FAQ / Testimonials / Footer** — closing sections, all token-aware
+- **Nav** — sticky navigation with brand chrome from theme `brand.*`
+
+### Theme Studio
+
+- **Live preview** — hero, buttons, cards, glass surfaces update as you edit
+- **Color pickers** — every color + gradient token
+- **Google Fonts** — sans + mono selectors with live `<link>` injection
+- **Presets** — one-click `aether-purple`, `ocean-teal`, `sunset-rose`
+- **Brand chrome** — name, tagline, logo text
+- **Radius + density** — comfortable / compact spacing
+- **Glow + glass** — intensity / opacity sliders
+- **Sticky actions** — Save · Export · Import · Copy for agent · Reset
+- **Library** — “Save current as…” named snapshots (`aether-fleet-theme-library`)
+
+### Fleet
+
+- **Site registry** — `{ id, name, slug, url?, notes?, themeId? }` in `aether-fleet-sites`
+- **Seeded placeholders** — Aether Course, Movie Nexus Marketing, Login-X Docs (editable)
+- **CRUD** — add / edit / delete sites
+- **Assignments** — assign a saved theme or preset per site; apply confirms locally
+- **Theme library** — presets + user snapshots (manage / remove)
+- **Client-only note** — assignments stay in the browser; agents still use exported JSON per site
+
+### Agent Kit
+
+- **JSON schema summary** + expandable full `agent-schema.json`
+- **Copy full agent brief** — clone → drop theme → edit `site.ts`
+- **Downloads** — `theme.json` and `fleet-agent-brief.md`
+- **In-app viewer** — [`AGENT_TEMPLATE.md`](./AGENT_TEMPLATE.md) + copy button
+- **Spin-up prompt** — recommended agent checklist snippet
+
+### Design tokens
+
+- **brand** — `name`, `tagline`, `logoText`
+- **colors** — `bgDeep`, `bgMid`, `violet`, `purple`, `sky`, `cyan`, `text`, `textMuted`, `border`, `success`, `danger`, `cardBg`
+- **gradients** — `heroFrom`, `heroTo`, `ctaFrom`, `ctaMid`, `ctaTo`
+- **fonts** — sans / mono family + optional Google Fonts URL
+- **radius** — `sm` / `md` / `lg` / `xl`
+- **spacingDensity** — `comfortable` | `compact`
+- **effects** — `glowIntensity` (0–1), `glassOpacity`
+- **Apply path** — `ThemeProvider` → `applyTheme` sets CSS vars on `:root`
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Bundler | Vite 8 |
+| UI | React 19 |
+| Routing | React Router DOM 7 |
+| Styling | Tailwind CSS v4 (`@tailwindcss/vite`) |
+| Language | TypeScript |
+| Lint | Oxlint |
+| Serve (prod) | nginx:alpine (Docker) or `vite preview` |
+
+---
+
+## Quick Start
+
+### Prerequisites
+
+- **Node.js 18+** — [download](https://nodejs.org/)
+- **npm** (comes with Node.js)
+- **Git** — [download](https://git-scm.com/)
+- **Docker** (optional) — [download](https://www.docker.com/)
+
+### npm
 
 ```bash
+# 1. Clone
+git clone https://github.com/jnktechnologies3/aether-fleet-template.git
+cd aether-fleet-template
+
+# 2. Install
 npm install
+
+# 3. Dev server
 npm run dev
 ```
+
+> Open **http://localhost:5173** — landing at `/`, Fleet Dashboard at `/dashboard`.
+
+```bash
+# Production build + local preview
+npm run build
+npm run preview
+```
+
+### Docker
+
+```bash
+docker compose up --build
+```
+
+> Open **http://localhost:8080**
+
+The image is a static SPA: Vite `build` → copy `dist` into **nginx:alpine** with `try_files` for client-side routes.
+
+---
+
+## Environment Variables
+
+This template is **client-only**. No server secrets are required.
+
+| Variable / Key | Required | Description |
+|----------------|----------|-------------|
+| `VITE_*` | No | Optional Vite public vars (see [`.env.example`](./.env.example)) |
+| `?theme=<slug>` | No | Query param — loads `public/themes/<slug>.json` on first mount |
+| `aether-fleet-theme` | No | localStorage — active Theme Studio theme JSON |
+| `aether-fleet-sites` | No | localStorage — fleet site registry |
+| `aether-fleet-theme-library` | No | localStorage — named theme snapshots |
+| `aether-fleet-activity` | No | localStorage — recent activity feed |
+| `aether-fleet-last-saved` | No | localStorage — last theme save ISO timestamp |
+
+```bash
+cp .env.example .env   # only needed if you add real VITE_* vars
+```
+
+---
+
+## Project Structure
+
+```
+aether-fleet-template/
+├── public/
+│   └── themes/                 # Preset theme JSON (aether-purple, ocean-teal, sunset-rose)
+├── screenshots/                # Optional marketing captures
+├── src/
+│   ├── content/
+│   │   ├── site.ts             # Agent-facing marketing copy
+│   │   └── agentTemplate.ts    # Inlined AGENT_TEMPLATE for Agent Kit
+│   ├── fleet/
+│   │   ├── types.ts            # FleetSite, library, activity types + storage keys
+│   │   └── storage.ts          # localStorage helpers + seeds
+│   ├── theme/
+│   │   ├── tokens.ts           # ThemeTokens + STORAGE_KEY
+│   │   ├── applyTheme.ts       # Sets CSS vars on :root
+│   │   ├── ThemeProvider.tsx   # Context + ?theme= honor
+│   │   ├── defaults.ts         # Inlined aether-purple
+│   │   └── agent-schema.json   # JSON Schema for agents
+│   ├── pages/
+│   │   ├── Landing.tsx
+│   │   ├── Dashboard.tsx       # Fleet Dashboard shell
+│   │   └── dashboard/
+│   │       ├── OverviewPanel.tsx
+│   │       ├── ThemeStudioPanel.tsx
+│   │       ├── FleetPanel.tsx
+│   │       ├── AgentKitPanel.tsx
+│   │       └── studioShared.tsx
+│   ├── components/             # Landing sections (token-aware)
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css               # Utilities bound to CSS variables
+├── AGENT_TEMPLATE.md           # Agent clone / theme / copy contract
+├── CHANGELOG.md
+├── VERSION
+├── LICENSE
+├── Dockerfile                  # deps → vite build → nginx:alpine
+├── docker-compose.yml          # aether-fleet on :8080
+├── nginx.conf                  # SPA try_files
+├── .env.example
+└── package.json
+```
+
+---
+
+## Usage
+
+### Routes
 
 | Route | Purpose |
 |-------|---------|
 | `/` | Marketing landing (all sections, themed) |
 | `/dashboard` | **Overview** — fleet stats, quick actions, recent activity |
-| `/dashboard/theme` | **Theme Studio** — live token controls, export/import, library save |
+| `/dashboard/theme` | **Theme Studio** — live token controls, export/import, library |
 | `/dashboard/fleet` | **Fleet** — site registry + theme library + assignments |
-| `/dashboard/agent` | **Agent Kit** — schema, briefs, downloadable theme JSON |
+| `/dashboard/agent` | **Agent Kit** — schema, briefs, downloads |
 | `/?theme=ocean-teal` | Load a preset from `public/themes/` |
 
-```bash
-npm run build
-npm run preview
-```
+### Typical workflow
 
-## Fleet Dashboard
+1. Open **Theme Studio**, tweak tokens, **Export** or **Save current as…**
+2. Register sites under **Fleet** and assign themes (local only)
+3. From **Agent Kit**, copy the brief or download `theme.json`
+4. For a new site: clone → drop `public/themes/<slug>.json` → edit `src/content/site.ts` → `npm run build`
 
-Top bar: brand mark, “Fleet Dashboard”, link back to landing preview.  
-Left nav: **Overview** · **Theme Studio** · **Fleet** · **Agent Kit**.
+---
 
-### Overview
+## Agent Contract
 
-- Stats: sites in fleet (local registry), active theme name, token count, last saved time
-- Quick actions: Open Theme Studio, Export theme, Copy agent prompt, Preview landing, Save, Manage fleet
-- Recent activity list (local only — theme saves, imports, preset loads, site edits, assignments)
-
-### Theme Studio
-
-- Live preview (hero, buttons, cards, glass)
-- Color pickers for every color + gradient token
-- Google font selectors (sans + mono) with live `<link>` injection
-- Presets: `aether-purple`, `ocean-teal`, `sunset-rose`
-- Brand name / tagline / logo text
-- Radius + density (comfortable / compact)
-- Glow + glass sliders
-- Sticky save bar: **Save** · **Export** · **Import** · **Copy for agent** · **Reset**
-- **Save current as…** → named snapshot in the theme library (`aether-fleet-theme-library`)
-- Current working theme persisted at `localStorage` key `aether-fleet-theme`
-
-### Fleet
-
-- Local **fleet registry** (`aether-fleet-sites`): `{ id, name, slug, url?, notes?, themeId? }`
-- Seeded with 3 editable placeholders: Aether Course, Movie Nexus Marketing, Login-X Docs
-- Add / edit / delete sites
-- Per site: assign a saved theme or preset; **Apply theme to site** confirms locally
-- Theme library lists presets + user snapshots (manage/remove saved entries)
-- UI note: assignments are client-side; agents still use exported JSON per site
-
-### Agent Kit
-
-- JSON schema summary (+ expandable full `agent-schema.json`)
-- One-click **Copy full agent brief** (clone → drop theme → edit `site.ts`)
-- Download `theme.json` and `fleet-agent-brief.md`
-- In-app `AGENT_TEMPLATE.md` viewer + copy
-- Recommended spin-up prompt snippet
-
-## Fleet / template usage
-
-Agents: follow **[`AGENT_TEMPLATE.md`](./AGENT_TEMPLATE.md)`**.
+Agents should follow **[`AGENT_TEMPLATE.md`](./AGENT_TEMPLATE.md)** — do not invent a parallel styling system.
 
 1. Copy this repo  
 2. Drop `public/themes/<slug>.json` (schema: `src/theme/agent-schema.json`)  
 3. Edit copy in `src/content/site.ts`  
 4. `npm i && npm run build`
 
-### Tunable attributes
+---
 
-`brand` · `colors` (12) · `gradients` (5) · `fonts` · `radius` · `spacingDensity` · `effects.glowIntensity` · `effects.glassOpacity`
+## Version History
 
-### localStorage keys
+See **[CHANGELOG.md](./CHANGELOG.md)** for the full Keep a Changelog history.
 
-| Key | Purpose |
-|-----|---------|
-| `aether-fleet-theme` | Active Theme Studio theme |
-| `aether-fleet-sites` | Fleet site registry |
-| `aether-fleet-theme-library` | Named theme snapshots |
-| `aether-fleet-activity` | Recent activity feed |
-| `aether-fleet-last-saved` | Last theme save ISO timestamp |
+| Version | Date | Highlights |
+|---------|------|------------|
+| **0.1.0** | 2026-09-24 | Initial release — landing, tokens, Theme Studio, Fleet, Agent Kit, Docker |
 
-## Project layout
+---
 
-```
-src/
-  content/site.ts              # Agent-facing marketing copy
-  fleet/
-    types.ts                   # FleetSite, library, activity types
-    storage.ts                 # localStorage helpers + seeds
-  theme/
-    tokens.ts                  # ThemeTokens type + font catalog
-    applyTheme.ts              # Sets CSS vars on :root
-    ThemeProvider.tsx          # Context + useTheme()
-    defaults.ts                # Inlined aether-purple
-    agent-schema.json          # JSON Schema for agents
-  pages/
-    Landing.tsx
-    Dashboard.tsx              # Fleet Dashboard shell (top bar + left nav)
-    dashboard/
-      OverviewPanel.tsx
-      ThemeStudioPanel.tsx
-      FleetPanel.tsx
-      AgentKitPanel.tsx
-      studioShared.tsx
-  components/                  # Landing sections (token-aware)
-  index.css                    # Utilities bound to CSS variables
-public/themes/                 # Preset JSON themes
-AGENT_TEMPLATE.md              # Agent contract
-```
+## Roadmap
 
-## Note
+- [ ] **Multi-site remote sync** — optional backend or sync API for fleet registry beyond localStorage
+- [ ] **Vercel / static hosting guide** — one-click deploy docs and `vercel.json` rewrites for SPA
+- [ ] **trickdaddy mirror** — polish parity / published mirror under companion orgs
+- [ ] **Theme marketplace pack** — more presets + import from URL
+- [ ] **CI** — GitHub Actions for `npm run build` + Docker image publish
+- [ ] **Live site preview iframe** — Theme Studio preview against assigned fleet URLs
 
-Pricing CTAs are demo-only (`alert`). No backend or checkout — fleet registry and theme library are browser-local.
+---
+
+## License
+
+MIT © 2026 [JNK Technologies](https://github.com/jnktechnologies3) — see [LICENSE](./LICENSE).

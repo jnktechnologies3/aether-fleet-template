@@ -1,0 +1,14 @@
+services:
+  aether-fleet:
+    build: .
+    container_name: aether-fleet
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    # Optional Saltbox / Traefik labels (uncomment and set Host if needed):
+    # labels:
+    #   traefik.enable: "true"
+    #   traefik.http.routers.aether-fleet.rule: "Host(`aether.example.com`)"
+    #   traefik.http.routers.aether-fleet.entrypoints: "websecure"
+    #   traefik.http.routers.aether-fleet.tls.certresolver: "cfdns"
+    #   traefik.http.services.aether-fleet.loadbalancer.server.port: "80"

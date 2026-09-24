@@ -1,8 +1,10 @@
 {
-  "name": "aether-agentic-course",
+  "name": "aether-fleet-template",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
+  "description": "Aether Fleet Template — agent-usable Vite + React marketing starter with Theme Studio, fleet registry, and design-token theming (Aether Lab / JNK Technologies).",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -19,6 +21,7 @@
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
     "oxlint": "^1.81.0",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.2",

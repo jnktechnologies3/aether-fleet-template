@@ -7,12 +7,28 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Build
 dist
 dist-ssr
+build
 *.local
 
-# Editor directories and files
+# Env (keep examples)
+.env
+.env.*
+!.env.example
+
+# Editor / OS
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,3 +38,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.pem
+
+# Testing / coverage
+coverage
+
+# Vercel / misc
+.vercel
+*.tsbuildinfo
+
+# Screenshots are committed intentionally under screenshots/
+# (uncomment to ignore local captures)
+# screenshots/*.png
