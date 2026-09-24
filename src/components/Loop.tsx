@@ -1,2 +1,36 @@
-const steps=[{n:'01',title:'Frame the goal',line:'One outcome, one run — no fuzzy wish lists.'},{n:'02',title:'Load thin context',line:'Stack, commands, conventions — only what this task needs.'},{n:'03',title:'Design the change',line:'Boundaries and data flow before a single line lands.'},{n:'04',title:'Implement a slice',line:'Small diff, your conventions, one task complete.'},{n:'05',title:'Verify & document',line:'Tests green, docs updated, review notes written.'},{n:'06',title:'Ship & sync',line:'PR with real summary — then start the next loop.'}]
-export default function Loop(){return <section className="section-pad"><div className="mx-auto max-w-6xl"><div className="mb-12 text-center"><h2 className="section-title">The loop: <span className="text-gradient">one-line → ship</span></h2><p className="section-sub mx-auto mt-4">Six steps you can run on greenfield, live features, or inherited code.</p></div><ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{steps.map(s=><li key={s.n} className="card group relative"><span className="font-mono text-3xl font-bold text-accent/40 group-hover:text-accent/70 transition">{s.n}</span><h3 className="mt-2 text-lg font-semibold">{s.title}</h3><p className="mt-1 text-sm text-white/55">{s.line}</p></li>)}</ol></div></section>}
+const steps = [
+  { n: '01', title: 'Frame the goal', line: 'One outcome, one run — no fuzzy wish lists.' },
+  { n: '02', title: 'Load thin context', line: 'Stack, commands, conventions — only what this task needs.' },
+  { n: '03', title: 'Design the change', line: 'Boundaries and data flow before a single line lands.' },
+  { n: '04', title: 'Implement a slice', line: 'Small diff, your conventions, one task complete.' },
+  { n: '05', title: 'Verify & document', line: 'Tests green, docs updated, review notes written.' },
+  { n: '06', title: 'Ship & sync', line: 'PR with real summary — then start the next loop.' },
+]
+
+export default function Loop() {
+  return (
+    <section className="section-pad">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 text-center">
+          <h2 className="section-title">
+            The loop: <span className="text-gradient">one-line → ship</span>
+          </h2>
+          <p className="section-sub mx-auto mt-4">
+            Six steps you can run on greenfield, live features, or inherited code.
+          </p>
+        </div>
+        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {steps.map((s) => (
+            <li key={s.n} className="card group relative">
+              <span className="font-mono text-3xl font-bold text-accent/40 group-hover:text-accent/70 transition">
+                {s.n}
+              </span>
+              <h3 className="mt-2 text-lg font-semibold">{s.title}</h3>
+              <p className="mt-1 text-sm text-white/55">{s.line}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )
+}

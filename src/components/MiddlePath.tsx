@@ -1,1 +1,74 @@
-const columns=[{label:'Too heavy',tone:'border-rose-400/20',badge:'text-rose-300',title:'Context landfill',points:['Dozens of stale .md files nobody trusts','Every run loads the whole monorepo','Agents drown in outdated rules']},{label:'The system',tone:'border-[color-mix(in_srgb,var(--color-violet)_40%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--color-violet)_20%,transparent)]',badge:'text-highlight',title:'Balanced rails',highlight:true,points:['Thin context: stack, commands, conventions','One skill stage per focused run','Docs refresh when reality changes']},{label:'Too light',tone:'border-amber-400/20',badge:'text-amber-300',title:'Vibe prompts',points:['No written plan or acceptance bar','Chat history is the only memory','Works until the second feature']}];export default function MiddlePath(){return <section className="section-pad"><div className="mx-auto max-w-6xl"><div className="mb-12 text-center"><h2 className="section-title">The <span className="text-gradient">middle path</span></h2><p className="section-sub mx-auto mt-4">Over-engineering context and under-engineering process both fail. Aim for rails, not ritual.</p></div><div className="grid gap-5 md:grid-cols-3">{columns.map(col=><div key={col.label} className={`rounded-2xl border bg-white/[0.03] p-6 ${col.tone} ${col.highlight?'bg-gradient-to-b from-[color-mix(in_srgb,var(--color-violet)_10%,transparent)] to-transparent':''}`}><p className={`text-xs font-semibold uppercase tracking-widest ${col.badge}`}>{col.label}</p><h3 className="mt-2 text-xl font-semibold">{col.title}</h3><ul className="mt-5 space-y-3 text-sm text-white/55">{col.points.map(p=><li key={p} className="flex gap-2"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white/30"/>{p}</li>)}</ul></div>)}</div></div></section>}
+const columns = [
+  {
+    label: 'Too heavy',
+    tone: 'border-rose-400/20',
+    badge: 'text-rose-300',
+    title: 'Context landfill',
+    points: [
+      'Dozens of stale .md files nobody trusts',
+      'Every run loads the whole monorepo',
+      'Agents drown in outdated rules',
+    ],
+  },
+  {
+    label: 'The system',
+    tone: 'border-[color-mix(in_srgb,var(--color-violet)_40%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--color-violet)_20%,transparent)]',
+    badge: 'text-highlight',
+    title: 'Balanced rails',
+    highlight: true,
+    points: [
+      'Thin context: stack, commands, conventions',
+      'One skill stage per focused run',
+      'Docs refresh when reality changes',
+    ],
+  },
+  {
+    label: 'Too light',
+    tone: 'border-amber-400/20',
+    badge: 'text-amber-300',
+    title: 'Vibe prompts',
+    points: [
+      'No written plan or acceptance bar',
+      'Chat history is the only memory',
+      'Works until the second feature',
+    ],
+  },
+]
+
+export default function MiddlePath() {
+  return (
+    <section className="section-pad">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 text-center">
+          <h2 className="section-title">
+            The <span className="text-gradient">middle path</span>
+          </h2>
+          <p className="section-sub mx-auto mt-4">
+            Over-engineering context and under-engineering process both fail. Aim for rails, not ritual.
+          </p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {columns.map((col) => (
+            <div
+              key={col.label}
+              className={`rounded-2xl border bg-white/[0.03] p-6 ${col.tone} ${
+                col.highlight ? 'bg-gradient-to-b from-[color-mix(in_srgb,var(--color-violet)_10%,transparent)] to-transparent' : ''
+              }`}
+            >
+              <p className={`text-xs font-semibold uppercase tracking-widest ${col.badge}`}>{col.label}</p>
+              <h3 className="mt-2 text-xl font-semibold">{col.title}</h3>
+              <ul className="mt-5 space-y-3 text-sm text-white/55">
+                {col.points.map((p) => (
+                  <li key={p} className="flex gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white/30" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
