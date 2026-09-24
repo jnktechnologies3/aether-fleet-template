@@ -1,1 +1,67 @@
-import type {ThemeTokens} from '../theme/tokens';export type FleetSite={id:string;name:string;slug:string;url?:string;notes?:string;themeId?:string};export type ThemeLibraryEntry={id:string;name:string;source:'preset'|'saved';savedAt:string;theme:ThemeTokens};export type ActivityKind='theme-save'|'theme-import'|'preset-load'|'library-save'|'site-add'|'site-edit'|'site-delete'|'theme-assign';export type ActivityItem={id:string;kind:ActivityKind;label:string;at:string};export const FLEET_SITES_KEY='aether-fleet-sites',THEME_LIBRARY_KEY='aether-fleet-theme-library',ACTIVITY_KEY='aether-fleet-activity',LAST_SAVED_KEY='aether-fleet-last-saved';export const SEED_SITES:FleetSite[]=[{id:'site-aether',name:'Aether Course',slug:'aether-course',url:'https://example.com/aether',notes:'Flagship agentic engineering course landing',themeId:'preset:aether-purple'},{id:'site-movie',name:'Movie Nexus Marketing',slug:'movie-nexus',url:'https://example.com/movie-nexus',notes:'Streaming marketing site (placeholder)',themeId:'preset:sunset-rose'},{id:'site-loginx',name:'Login-X Docs',slug:'login-x-docs',url:'https://example.com/login-x',notes:'Auth product docs / marketing (placeholder)',themeId:'preset:ocean-teal'}]
+import type { ThemeTokens } from '../theme/tokens'
+
+export type FleetSite = {
+  id: string
+  name: string
+  slug: string
+  url?: string
+  notes?: string
+  themeId?: string
+}
+
+export type ThemeLibraryEntry = {
+  id: string
+  name: string
+  source: 'preset' | 'saved'
+  savedAt: string
+  theme: ThemeTokens
+}
+
+export type ActivityKind =
+  | 'theme-save'
+  | 'theme-import'
+  | 'preset-load'
+  | 'library-save'
+  | 'site-add'
+  | 'site-edit'
+  | 'site-delete'
+  | 'theme-assign'
+
+export type ActivityItem = {
+  id: string
+  kind: ActivityKind
+  label: string
+  at: string
+}
+
+export const FLEET_SITES_KEY = 'aether-fleet-sites'
+export const THEME_LIBRARY_KEY = 'aether-fleet-theme-library'
+export const ACTIVITY_KEY = 'aether-fleet-activity'
+export const LAST_SAVED_KEY = 'aether-fleet-last-saved'
+
+export const SEED_SITES: FleetSite[] = [
+  {
+    id: 'site-aether',
+    name: 'Aether Course',
+    slug: 'aether-course',
+    url: 'https://example.com/aether',
+    notes: 'Flagship agentic engineering course landing',
+    themeId: 'preset:aether-purple',
+  },
+  {
+    id: 'site-movie',
+    name: 'Movie Nexus Marketing',
+    slug: 'movie-nexus',
+    url: 'https://example.com/movie-nexus',
+    notes: 'Streaming marketing site (placeholder)',
+    themeId: 'preset:sunset-rose',
+  },
+  {
+    id: 'site-loginx',
+    name: 'Login-X Docs',
+    slug: 'login-x-docs',
+    url: 'https://example.com/login-x',
+    notes: 'Auth product docs / marketing (placeholder)',
+    themeId: 'preset:ocean-teal',
+  },
+]
